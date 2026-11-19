@@ -1,0 +1,21 @@
+{
+  "_note": "Reference API list prices (USD per 1M tokens) for Stage 04 shadow-cost estimation. Verify current vendor pricing before final reporting.",
+  "currency": "USD",
+  "unit": "per_1m_tokens",
+  "models": {
+    "gemini-2.5-pro": { "input": 1.25, "output": 10.00 },
+    "gemini-2.5-flash": { "input": 0.30, "output": 2.50 },
+    "gemini-3-flash": { "input": 0.50, "output": 3.00 },
+    "gemini-3.5-flash": { "input": 0.50, "output": 3.00 },
+    "gemini-3.1-pro": { "input": 2.00, "output": 12.00 },
+    "gemini 4 hydrogen": { "input": 1.25, "output": 10.00 },
+    "claude-sonnet-4-5": { "input": 3.00, "output": 15.00 },
+    "claude-opus-4-1": { "input": 15.00, "output": 75.00 },
+    "claude-haiku-4-5": { "input": 1.00, "output": 5.00 },
+    "gpt-5": { "input": 1.25, "output": 10.00 },
+    "gpt-5-mini": { "input": 0.25, "output": 2.00 },
+    "o3": { "input": 2.00, "output": 8.00 },
+    "o4-mini": { "input": 1.10, "output": 4.40 }
+  },
+  "fallback_default": { "input": 2.00, "output": 10.00 }
+}

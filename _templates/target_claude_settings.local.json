@@ -1,0 +1,7 @@
+{
+  "env": {
+    "PHOENIX_ENDPOINT": "http://localhost:6006",
+    "PHOENIX_PROJECT": "__PROJECT_NAME__",
+    "PHOENIX_PROJECT_NAME": "__PROJECT_NAME__"
+  }
+}

@@ -1,0 +1,21 @@
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local CLI app state & saved project profiles
+.icm-otel/
+
+# Large trace exports, backups & local Phoenix DBs
+03_capture_traces/outputs/*.parquet
+03_capture_traces/outputs/*.jsonl
+04_ingest_and_eval/outputs/*.parquet
+04_ingest_and_eval/outputs/*.jsonl
+*.bak
+*.db
+*.sqlite
+
+# OS / Editor
+.DS_Store

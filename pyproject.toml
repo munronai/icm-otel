@@ -1,0 +1,17 @@
+[project]
+name = "icm-otel"
+version = "0.1.0"
+description = "Reusable ICM workspace for configuring and evaluating OTel + Arize Phoenix telemetry across agent harnesses"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "arize-phoenix-client>=1.0.0",
+    "arize-phoenix-evals>=1.0.0",
+    "tiktoken>=0.7.0",
+    "pyyaml>=6.0",
+    "pandas>=2.2.0",
+    "pyarrow>=15.0.0",
+    "google-genai>=1.0.0",
+]
+
+[tool.uv]
+package = false

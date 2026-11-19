@@ -1,0 +1,42 @@
+# Domain Preset: EU AI Act Risk Assessment Eval Criteria
+# Mergeable into any target project's eval_rubric.yaml via Stage 06 (extend_rubric.py)
+
+deterministic_checks:
+  - name: "no_unhandled_tool_errors"
+    description: "Check TOOL spans for error status or non-zero exit codes"
+    max_error_rate: 0.10
+  - name: "max_tool_turns_per_stage"
+    description: "Flag runaway tool loops during regulatory analysis"
+    threshold: 40
+
+llm_judge_evals:
+  enabled: true
+  judge_model: "gemini-2.5-flash"
+  criteria:
+    - name: "eu_ai_act_risk_tier_accuracy"
+      choices:
+        PASS: 1.0
+        FAIL: 0.0
+      prompt_template: |
+        Evaluate whether the agent correctly classified the AI system's risk tier under the EU AI Act (Unacceptable/Prohibited Art. 5, High-Risk Art. 6 & Annex III, Limited-Risk Art. 50, or Minimal Risk) and cited specific statutory criteria from the input context without inventing articles.
+        Input: {input}
+        Output: {output}
+        Respond with label PASS or FAIL and a one-sentence explanation.
+    - name: "eu_ai_act_obligations_completeness"
+      choices:
+        PASS: 1.0
+        FAIL: 0.0
+      prompt_template: |
+        Evaluate whether the output identifies concrete compliance obligations (e.g., risk management, data governance, technical documentation, logging, transparency, human oversight under Arts. 9-15 / Art. 50) proportional to the assigned risk tier.
+        Input: {input}
+        Output: {output}
+        Respond with label PASS or FAIL and a one-sentence explanation.
+    - name: "grounded_regulatory_citations"
+      choices:
+        PASS: 1.0
+        FAIL: 0.0
+      prompt_template: |
+        Check whether every EU AI Act article, Annex reference, file path, and system fact in the output is grounded in the provided input or tool outputs rather than fabricated.
+        Input: {input}
+        Output: {output}
+        Respond with label PASS or FAIL and a one-sentence explanation.

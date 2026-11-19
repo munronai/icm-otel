@@ -1,0 +1,42 @@
+# Eval Rubric for career-catalyst-icm
+project_name: "career-catalyst-icm"
+phoenix_endpoint: "http://localhost:6006"
+target_workspace: "/Users/munron/dev/career-catalyst-icm"
+
+shadow_tokens:
+  enabled_for_harnesses: ["antigravity"]
+  tokenizer: "tiktoken"
+  pricing_table: "00_reference/model_pricing.json"
+
+deterministic_checks:
+  - name: "no_unhandled_tool_errors"
+    description: "Check TOOL spans for error status or non-zero exit codes"
+    max_error_rate: 0.15
+  - name: "max_tool_turns_per_stage"
+    description: "Flag runaway tool loops"
+    threshold: 25
+
+target_stages:
+  - stage: "stages/01-job-search/"
+    expected_output: "Job Search Report — `output/job-search-YYYY-MM-DD.md`"
+  - stage: "stages/02-role-prep/"
+    expected_output: "Role Prep Report — `output/YYYY-MM-DD-[company-slug]-[role-slug].md`"
+  - stage: "stages/03-proposal-builder/"
+    expected_output: "Research Summary — `output/proposals/[proposal-name]/research/discovery_report.md`"
+
+llm_judge_evals:
+  enabled: true
+  judge_model: "gemini-2.5-flash"
+  criteria:
+    - name: "stage_instruction_adherence"
+      prompt_template: |
+        Evaluate whether the agent followed the stage instructions and produced a valid, grounded output without fabricating file paths or tool outputs.
+        Input: {input}
+        Output: {output}
+        Respond with label PASS or FAIL and a one-sentence explanation.
+    - name: "tool_efficiency"
+      prompt_template: |
+        Evaluate whether the agent solved the task cleanly without redundant retries or unnecessary context reads.
+        Input: {input}
+        Output: {output}
+        Respond with label EFFICIENT or WASTEFUL and a one-sentence explanation.

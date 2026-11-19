@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-11-15T22:42:46.571562+00:00",
+  "binaries": {
+    "uv": "/Users/munron/.local/bin/uv",
+    "uvx": "/Users/munron/.local/bin/uvx",
+    "python3": "/Users/munron/icm-otel/.venv/bin/python3",
+    "node": "/Users/munron/.nvm/versions/node/v22.14.0/bin/node",
+    "npx": "/Users/munron/.nvm/versions/node/v22.14.0/bin/npx",
+    "claude": "/Users/munron/.local/bin/claude",
+    "codex": null,
+    "agy": "/Users/munron/.local/bin/agy",
+    "gemini": "/Users/munron/.nvm/versions/node/v22.14.0/bin/gemini",
+    "docker": "/usr/local/bin/docker"
+  },
+  "phoenix": {
+    "endpoint": "http://localhost:6006",
+    "reachable": true,
+    "http_status": 200,
+    "status": "ok"
+  },
+  "harnesses": {
+    "arize_global": {
+      "path": "/Users/munron/.arize/harness/config.json",
+      "configured": true,
+      "status": "ok",
+      "details": {
+        "harnesses": {
+          "antigravity": {
+            "project_name": "icm-otel",
+            "target": "phoenix",
+            "endpoint": "http://localhost:6006",
+            "api_key": ""
+          },
+          "claude-code": {
+            "project_name": "icm-otel",
+            "target": "phoenix",
+            "endpoint": "http://localhost:6006",
+            "api_key": ""
+          }
+        },
+        "user_id": "munron",
+        "logging": {
+          "prompts": true,
+          "tool_details": true,
+          "tool_content": true
+        }
+      }
+    },
+    "antigravity": {
+      "path": "/Users/munron/.gemini/config/hooks.json",
+      "exists": true,
+      "hook_detected": true,
+      "matched_markers": [
+        "arize"
+      ],
+      "status": "ok"
+    },
+    "claude_code": {
+      "path": "/Users/munron/.claude/settings.json",
+      "exists": true,
+      "hook_detected": true,
+      "matched_markers": [
+        "arize",
+        "hooks"
+      ],
+      "status": "ok"
+    },
+    "codex": {
+      "path": "/Users/munron/.codex/config.toml",
+      "exists": false,
+      "hook_detected": false,
+      "status": "missing"
+    },
+    "gemini_cli_optional": {
+      "path": "/Users/munron/.gemini/settings.json",
+      "exists": true,
+      "hook_detected": false,
+      "matched_markers": [],
+      "status": "no_arize_hook_found"
+    },
+    "harness_logs": []
+  }
+}
